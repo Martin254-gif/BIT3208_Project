@@ -1,0 +1,280 @@
+/* ========================================
+   Task 1: Personal Profile Page
+   Mobile-First Approach
+   ======================================== */
+
+/* ---------- RESET & BASE ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    padding: 20px;
+    overflow: hidden;
+}
+
+/* ---------- PROFILE HEADER ---------- */
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 3px solid #1a73e8;
+    margin-bottom: 20px;
+}
+
+.profile-image {
+    margin-bottom: 15px;
+}
+
+.profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #1a73e8;
+    box-shadow: 0 4px 15px rgba(26,115,232,0.3);
+}
+
+.profile-info h1 {
+    font-size: 1.8rem;
+    color: #1a73e8;
+    margin-bottom: 5px;
+}
+
+.profile-info .title {
+    font-size: 1rem;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.profile-info .bio {
+    font-size: 0.95rem;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+    margin-bottom: 25px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    font-size: 1.3rem;
+    color: #1a73e8;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ---------- ABOUT ---------- */
+.about p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* ---------- CONTACT ---------- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.contact-item:hover {
+    background: #e8f0fe;
+}
+
+.contact-item .icon {
+    font-size: 1.2rem;
+    width: 30px;
+}
+
+.contact-item span:last-child {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* ---------- SKILLS ---------- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.skill-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.skill-bar {
+    width: 100%;
+    height: 10px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.skill-level {
+    height: 100%;
+    background: linear-gradient(90deg, #1a73e8, #4a9eff);
+    border-radius: 10px;
+    transition: width 0.8s ease;
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+    text-align: center;
+    padding-top: 15px;
+    color: #888;
+    font-size: 0.85rem;
+    border-top: 1px solid #eee;
+}
+
+/* ========================================
+   RESPONSIVE BREAKPOINTS
+   ======================================== */
+
+/* ---------- TABLETS (768px and up) ---------- */
+@media (min-width: 768px) {
+    body {
+        padding: 40px;
+    }
+
+    .container {
+        padding: 40px;
+    }
+
+    /* Profile Header - Horizontal Layout */
+    .profile-header {
+        flex-direction: row;
+        text-align: left;
+        gap: 30px;
+        padding: 30px 0;
+    }
+
+    .profile-image {
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+
+    .profile-image img {
+        width: 180px;
+        height: 180px;
+    }
+
+    .profile-info h1 {
+        font-size: 2.2rem;
+    }
+
+    .profile-info .bio {
+        margin: 0;
+    }
+
+    /* Contact Grid - 2 columns */
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Skills Grid - 2 columns */
+    .skills-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px 30px;
+    }
+}
+
+/* ---------- DESKTOPS (1024px and up) ---------- */
+@media (min-width: 1024px) {
+    body {
+        padding: 50px;
+    }
+
+    .container {
+        padding: 50px;
+    }
+
+    .profile-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-info h1 {
+        font-size: 2.5rem;
+    }
+
+    .profile-info .title {
+        font-size: 1.1rem;
+    }
+
+    .profile-info .bio {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .about p {
+        font-size: 1rem;
+    }
+
+    /* Contact Grid - 2 columns with better spacing */
+    .contact-grid {
+        gap: 15px;
+    }
+
+    /* Skills Grid - 2 columns */
+    .skills-grid {
+        gap: 20px 40px;
+    }
+}
+
+/* ---------- LARGE DESKTOPS (1440px and up) ---------- */
+@media (min-width: 1440px) {
+    .container {
+        max-width: 1200px;
+        padding: 60px;
+    }
+}
