@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content - DOM Manipulation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1a73e8;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            background: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin: 5px;
+        }
+        
+        button:hover {
+            background: #1557b0;
+        }
+        
+        .output {
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            min-height: 50px;
+        }
+        
+        .preview-box {
+            padding: 20px;
+            background: white;
+            border: 2px dashed #1a73e8;
+            border-radius: 5px;
+            margin-top: 10px;
+            text-align: center;
+            min-height: 80px;
+        }
+        
+        .counter {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1a73e8;
+            display: inline-block;
+            padding: 10px;
+        }
+        
+        .color-box {
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>✨ DOM Manipulation Demo</h1>
+        
+        <!-- Section 1: Live Text Preview -->
+        <div class="section">
+            <h2>📝 Live Text Preview</h2>
+            <input type="text" id="textInput" placeholder="Type something...">
+            <div class="preview-box" id="previewBox">
+                Your text will appear here
+            </div>
+        </div>
+        
+        <!-- Section 2: Interactive Buttons -->
+        <div class="section">
+            <h2>🔘 Interactive Buttons</h2>
+            <button onclick="changeText('Hello World!')">Say Hello</button>
+            <button onclick="changeText('Goodbye!')">Say Goodbye</button>
+            <button onclick="changeText('DOM Manipulation is fun!')">Custom Message</button>
+            <div class="output" id="outputBox">
+                Click a button to change this text
+            </div>
+        </div>
+        
+        <!-- Section 3: Color Changer -->
+        <div class="section">
+            <h2>🎨 Color Changer</h2>
+            <button onclick="changeColor('red')">Red</button>
+            <button onclick="changeColor('blue')">Blue</button>
+            <button onclick="changeColor('green')">Green</button>
+            <button onclick="changeColor('purple')">Purple</button>
+            <button onclick="changeColor('orange')">Orange</button>
+            <button onclick="resetColor()">Reset</button>
+            <div class="color-box" id="colorBox">
+                Click a color button to change my background!
+            </div>
+        </div>
+        
+        <!-- Section 4: Counter -->
+        <div class="section">
+            <h2>🔢 Counter</h2>
+            <button onclick="decrementCounter()">-</button>
+            <span class="counter" id="counterDisplay">0</span>
+            <button onclick="incrementCounter()">+</button>
+            <button onclick="resetCounter()" class="btn-danger">Reset</button>
+        </div>
+        
+        <!-- Section 5: User Input Display -->
+        <div class="section">
+            <h2>📋 User Input Display</h2>
+            <input type="text" id="userName" placeholder="Enter your name">
+            <input type="text" id="userEmail" placeholder="Enter your email">
+            <button onclick="displayUserInfo()">Display Info</button>
+            <div class="output" id="userInfoDisplay">
+                Enter your details and click the button
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // =============================================
+        // SECTION 1: Live Text Preview
+        // =============================================
+        document.getElementById('textInput').addEventListener('input', function() {
+            const previewBox = document.getElementById('previewBox');
+            const text = this.value.trim();
+            
+            if (text === '') {
+                previewBox.innerHTML = 'Your text will appear here';
+                previewBox.style.color = '#999';
+            } else {
+                previewBox.innerHTML = text;
+                previewBox.style.color = '#333';
+            }
+        });
+        
+        // =============================================
+        // SECTION 2: Interactive Buttons
+        // =============================================
+        function changeText(message) {
+            document.getElementById('outputBox').innerHTML = message;
+            document.getElementById('outputBox').style.backgroundColor = '#e8f4fd';
+            document.getElementById('outputBox').style.border = '2px solid #1a73e8';
+        }
+        
+        // =============================================
+        // SECTION 3: Color Changer
+        // =============================================
+        function changeColor(color) {
+            const box = document.getElementById('colorBox');
+            box.style.backgroundColor = color;
+            box.style.color = 'white';
+            box.innerHTML = 'Current color: ' + color;
+        }
+        
+        function resetColor() {
+            const box = document.getElementById('colorBox');
+            box.style.backgroundColor = '#f8f9fa';
+            box.style.color = '#333';
+            box.innerHTML = 'Click a color button to change my background!';
+        }
+        
+        // =============================================
+        // SECTION 4: Counter
+        // =============================================
+        let counter = 0;
+        
+        function updateCounter() {
+            document.getElementById('counterDisplay').textContent = counter;
+            
+            // Change color based on value
+            const display = document.getElementById('counterDisplay');
+            if (counter > 0) {
+                display.style.color = '#28a745';
+            } else if (counter < 0) {
+                display.style.color = '#dc3545';
+            } else {
+                display.style.color = '#1a73e8';
+            }
+        }
+        
+        function incrementCounter() {
+            counter++;
+            updateCounter();
+        }
+        
+        function decrementCounter() {
+            counter--;
+            updateCounter();
+        }
+        
+        function resetCounter() {
+            counter = 0;
+            updateCounter();
+        }
+        
+        // =============================================
+        // SECTION 5: User Input Display
+        // =============================================
+        function displayUserInfo() {
+            const name = document.getElementById('userName').value.trim();
+            const email = document.getElementById('userEmail').value.trim();
+            const display = document.getElementById('userInfoDisplay');
+            
+            if (name === '' || email === '') {
+                display.innerHTML = '❌ Please fill in both fields';
+                display.style.backgroundColor = '#f8d7da';
+                display.style.color = '#721c24';
+                display.style.border = '2px solid #f5c6cb';
+                return;
+            }
+            
+            // Create dynamic HTML
+            display.innerHTML = `
+                <div style="text-align: left; padding: 10px;">
+                    <p><strong>👤 Name:</strong> ${name}</p>
+                    <p><strong>📧 Email:</strong> ${email}</p>
+                    <p><strong>⏰ Submitted at:</strong> ${new Date().toLocaleString()}</p>
+                    <hr>
+                    <p style="color: #28a745;">✅ User information captured successfully!</p>
+                </div>
+            `;
+            display.style.backgroundColor = '#e8f5e9';
+            display.style.color = '#333';
+            display.style.border = '2px solid #28a745';
+        }
+    </script>
+</body>
+</html>
