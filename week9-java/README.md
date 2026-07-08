@@ -3,7 +3,7 @@
 ## Student Login System
 
 **BIT3208 - Advanced Web Design**  
-**Author:** Martin Mwangi  
+**Author:** Martin Migwi
 **Date:** July 2026
 
 ---
