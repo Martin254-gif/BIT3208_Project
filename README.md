@@ -263,7 +263,7 @@ https://week9-java/screenshots/fig6-remember-me.png
 Username auto-filled from cookie after browser restart
 
 📚 Key Features Learned
-PHP Application (Weeks 1-8)
+   PHP Application (Weeks 1-8)
 Feature	Description
 CRUD Operations	Create, Read, Update, Delete students
 User Authentication	Login, Register, Logout with password hashing
@@ -271,7 +271,7 @@ Session Management	Track logged-in users with PHP sessions
 Role-Based Access	Admin, Lecturer, Student roles
 Search Functionality	Find students by name or ID
 Responsive Design	Mobile-first, works on all devices
-Java Application (Week 9)
+    Java Application (Week 9)
 Feature	Description
 Servlet Lifecycle	init(), service(), destroy()
 HttpSession	Server-side user tracking
@@ -320,7 +320,7 @@ Session expired	Implement redirect to login page
 Tomcat not starting	Check port conflicts (8080)
 Database connection failed	Verify credentials in db-connect.php
 👨‍💻 Author
-Martin Mwangi
+Martin Migwi
 
 GitHub: @Martin254-gif
 
